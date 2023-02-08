@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
+import Overlay from './components/Overlay.vue';
+import Container from './components/Container.vue';
+
+import background from './assets/background.webp';
 </script>
 
 <template>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <div class="h-screen w-full bg-cover bg-center" :style="{ backgroundImage: `url(${background})` }">
+        <Overlay>
+            <Container> </Container>
+        </Overlay>
+    </div>
 </template>
