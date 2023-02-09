@@ -3,6 +3,7 @@ import Overlay from './components/Overlay.vue';
 import Container from './components/Container.vue';
 
 import Title from './components/Title.vue';
+import Timer from './components/Timer.vue';
 import Credit from './components/Credit.vue';
 
 import background from './assets/background.webp';
@@ -16,6 +17,7 @@ import background from './assets/background.webp';
         <Overlay>
             <Container class="flex flex-col justify-between">
                 <Title />
+                <Timer />
                 <Credit />
             </Container>
         </Overlay>
