@@ -7,10 +7,17 @@ const emit = defineEmits<{
     (e: 'finish'): void;
 }>();
 
-const second = ref<number>(0);
-const minute = ref<number>(0);
-const hour = ref<number>(0);
-const day = ref<number>(0);
+const props = defineProps<{
+    hour: number;
+    minute: number;
+    day: number;
+    second: number;
+}>();
+
+const second = ref<number>(props.second);
+const minute = ref<number>(props.minute);
+const hour = ref<number>(props.hour);
+const day = ref<number>(props.day);
 
 const countdown = ref<any | null>();
 
