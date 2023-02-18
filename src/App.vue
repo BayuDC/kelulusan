@@ -10,9 +10,11 @@ import Credit from './components/Credit.vue';
 import useAxios from './composables/useAxios';
 
 import background from './assets/background.webp';
+import { AxiosError } from 'axios';
 
 const axios = useAxios();
 const loading = ref(true);
+const finish = ref(false);
 const timer = reactive({
     day: 0,
     hour: 0,
@@ -21,13 +23,24 @@ const timer = reactive({
 });
 
 onMounted(async () => {
-    const res = await axios.get('/info');
-    timer.day = res.data.time.day;
-    timer.hour = res.data.time.hour;
-    timer.minute = res.data.time.minute;
-    timer.second = res.data.time.second;
-    loading.value = false;
+    try {
+        const res = await axios.get('/info');
+        timer.day = res.data.time.day;
+        timer.hour = res.data.time.hour;
+        timer.minute = res.data.time.minute;
+        timer.second = res.data.time.second;
+    } catch (err) {
+        if ((err as AxiosError).code == '410') {
+            handleTimerFinish();
+        }
+    } finally {
+        loading.value = false;
+    }
 });
+
+function handleTimerFinish() {
+    finish.value = true;
+}
 </script>
 
 <template>
@@ -38,7 +51,7 @@ onMounted(async () => {
         <Overlay>
             <Container class="flex flex-col justify-between">
                 <Title />
-                <Timer v-if="!loading" v-bind="timer" />
+                <Timer v-if="!loading && !finish" v-bind="timer" @finish="handleTimerFinish" />
                 <Credit />
             </Container>
         </Overlay>
