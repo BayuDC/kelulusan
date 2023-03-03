@@ -15,16 +15,21 @@ const student = ref<
 
 const nis = ref('');
 const nisErr = ref(false);
+const passwd = ref('');
+const passwdErr = ref(false);
 
 async function handleSubmit() {
     nisErr.value = false;
+    passwdErr.value = false;
     try {
-        const res = await axios.get(`/me?nis=${nis.value}`);
+        const res = await axios.post(`/me`, {
+            nis: nis.value,
+            passwd: passwd.value,
+        });
         student.value = res.data.student;
     } catch (err) {
-        if ((err as AxiosError).response?.status == 404) {
-            nisErr.value = true;
-        }
+        nisErr.value = (err as AxiosError).response?.status == 404;
+        passwdErr.value = (err as AxiosError).response?.status == 401;
     }
 }
 </script>
@@ -41,6 +46,17 @@ async function handleSubmit() {
                     required
                 />
                 <p v-if="nisErr" class="text-xs text-red-400 mt-1 text-right">Data tidak ditemukan</p>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Kata Sandi</label>
+                <input
+                    v-model="passwd"
+                    class="border-2 shadow appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    :class="{ 'border-red-400': passwdErr }"
+                    type="text"
+                    required
+                />
+                <p v-if="passwdErr" class="text-xs text-red-400 mt-1 text-right">Kata sandi tidak benar</p>
             </div>
             <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block w-full"
