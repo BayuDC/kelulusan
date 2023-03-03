@@ -6,6 +6,7 @@ import Container from './components/Container.vue';
 import Title from './components/Title.vue';
 import Timer from './components/Timer.vue';
 import Credit from './components/Credit.vue';
+import Form from './components/Form.vue';
 
 import useAxios from './composables/useAxios';
 
@@ -51,7 +52,10 @@ function handleTimerFinish() {
         <Overlay>
             <Container class="flex flex-col justify-between">
                 <Title />
-                <Timer v-if="!loading && !finish" v-bind="timer" @finish="handleTimerFinish" />
+                <template v-if="!loading">
+                    <Form v-if="finish" />
+                    <Timer v-else v-bind="timer" @finish="handleTimerFinish" />
+                </template>
                 <Credit />
             </Container>
         </Overlay>
