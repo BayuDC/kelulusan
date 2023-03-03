@@ -31,7 +31,7 @@ onMounted(async () => {
         timer.minute = res.data.time.minute;
         timer.second = res.data.time.second;
     } catch (err) {
-        if ((err as AxiosError).code == '410') {
+        if ((err as AxiosError).response?.status == 410) {
             handleTimerFinish();
         }
     } finally {
