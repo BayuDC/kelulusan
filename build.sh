@@ -1,0 +1,1 @@
+docker run --rm -it -v ${PWD}:/app node:18.13-alpine ash -c "cd /app && npm i && npm run build"
