@@ -10,7 +10,7 @@ BTW the name of this project is so fucking cringe right?
 ![Countdown](https://media.discordapp.net/attachments/946013429200723989/1081607463196967072/image.png?width=640&height=360)
 ![Login](https://media.discordapp.net/attachments/946013429200723989/1081608646099746826/image.png?width=640&height=360)
 ![Result](https://media.discordapp.net/attachments/946013429200723989/1081608735341940787/image.png?width=640&height=360)
-![Result](https://cdn.discordapp.com/attachments/946013429200723989/1081608866975989791/image.png?width=640&height=360)
+![Result](https://media.discordapp.net/attachments/946013429200723989/1081608866975989791/image.png?width=640&height=360)
 
 ## Setup
 
