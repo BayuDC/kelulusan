@@ -69,6 +69,7 @@ async function handleSubmit() {
                 <p>SMK Tunas Harapan Pati menyatakan bahwa</p>
                 <p class="text-3xl text-gray-800">{{ student.name }}</p>
                 <p class="text-5xl text-gray-800">{{ student.graduate ? 'Lulus' : 'Tidak Lulus' }}</p>
+                <p class="text-xs mt-2">*SKL akan dibagikan pada ketika pelepasan pada tanggal 9 Mei 2023</p>
             </div>
         </template>
     </form>
