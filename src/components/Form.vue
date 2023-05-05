@@ -69,7 +69,11 @@ async function handleSubmit() {
                 <p>SMK Tunas Harapan Pati menyatakan bahwa</p>
                 <p class="text-3xl text-gray-800">{{ student.name }}</p>
                 <p class="text-5xl text-gray-800">{{ student.graduate ? 'Lulus' : 'Tidak Lulus' }}</p>
-                <p class="text-xs mt-2">*SKL akan dibagikan pada ketika pelepasan pada tanggal 9 Mei 2023</p>
+                <div class="text-xs mt-2">
+                    <p class="text-lg">Informasi Tambahan:</p>
+                    SKL(Surat Keterangan Lulus) akan dibagikan pada Kamis, 11 Mei 2023. Jadwal pembagian SKL akan
+                    disampaikan oleh PA di grup kelas masing-masing.
+                </div>
             </div>
         </template>
     </form>
